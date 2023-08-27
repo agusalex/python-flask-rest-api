@@ -26,11 +26,11 @@ class TestRoutes(unittest.TestCase):
             db.create_all()
 
     def test_get_all_factories(self):
-        response = self.client.get('/factories')
+        response = self.client.get('/v1/factories')
         self.assertEqual(response.status_code, 200)
 
     def test_get_factory_fail(self):
-        response = self.client.get('/factories/1')
+        response = self.client.get('/v1/factories/1')
         # Assuming factory with id 1 doesn't exist
         self.assertEqual(response.status_code, 404)
 
@@ -44,8 +44,8 @@ class TestRoutes(unittest.TestCase):
                 }
             }
         }
-        _ = self.client.post('/factories', json=valid_data)
-        response = self.client.get('/factories/1')
+        _ = self.client.post('/v1/factories', json=valid_data)
+        response = self.client.get('/v1/factories/1')
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.data), valid_data)
@@ -61,7 +61,7 @@ class TestRoutes(unittest.TestCase):
             }
         }
 
-        response = self.client.post('/factories', json=valid_data)
+        response = self.client.post('/v1/factories', json=valid_data)
         assert response.status_code == 201
         assert b'Factory created' in response.data
 
@@ -76,19 +76,19 @@ class TestRoutes(unittest.TestCase):
             }
         }
 
-        response = self.client.post('/factories', json=invalid_data)
+        response = self.client.post('/v1/factories', json=invalid_data)
         assert response.status_code == 400
         assert b'Length of actual, goal, and time data must be the same.' in response.data
 
     def test_create_factory_invalid_json(self):
         invalid_data = {}
 
-        response = self.client.post('/factories', json=invalid_data)
+        response = self.client.post('/v1/factories', json=invalid_data)
         assert response.status_code == 400
         assert b'Invalid JSON structure.' in response.data
 
     def test_get_all_sprockets(self):
-        response = self.client.get('/sprockets')
+        response = self.client.get('/v1/sprockets')
         self.assertEqual(response.status_code, 200)
 
     def test_create_sprocket(self):
@@ -98,7 +98,7 @@ class TestRoutes(unittest.TestCase):
             "outside_diameter": 11.0,
             "pitch": 2.0
         }
-        response = self.client.post('/sprockets', json=data)
+        response = self.client.post('/v1/sprockets', json=data)
         self.assertEqual(response.status_code, 201)
 
     def test_update_sprocket(self):
@@ -110,7 +110,7 @@ class TestRoutes(unittest.TestCase):
             "pitch": 2.0
         }
 
-        response = self.client.post('/sprockets', json=initial_data)
+        response = self.client.post('/v1/sprockets', json=initial_data)
         self.assertEqual(response.status_code, 201)
 
         # Now, update the sprocket
@@ -122,11 +122,11 @@ class TestRoutes(unittest.TestCase):
         }
 
         # Assuming the sprocket was the first one to be inserted and has id=1
-        response = self.client.put('/sprockets/1', json=update_data)
+        response = self.client.put('/v1/sprockets/1', json=update_data)
         self.assertEqual(response.status_code, 200)
 
         # Fetch the sprocket and check if the updates were successful
-        response = self.client.get('/sprockets/1')
+        response = self.client.get('/v1/sprockets/1')
         updated_sprocket_data = response.get_json()
         self.assertEqual(updated_sprocket_data['teeth'], 25)
         self.assertEqual(updated_sprocket_data['pitch_diameter'], 12.0)

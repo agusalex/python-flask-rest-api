@@ -1,5 +1,6 @@
 # Sprocket API 
 Flask Web Application running on Docker.
+Tests automated using github CI
 
 
 ## Overview

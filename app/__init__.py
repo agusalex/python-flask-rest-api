@@ -14,10 +14,10 @@ def create_app(config_name="production"):
     if config_name == "production":
         print("Running on prod")
         app.config.from_object(ProductionConfig)
-    elif config_name == "development2":
+    elif config_name == "development":
         print("Running on dev")
         app.config.from_object(DevelopmentConfig)
-    elif config_name == "testing2":
+    elif config_name == "testing":
         print("Running on test")
         app.config.from_object(TestingConfig)
     else:

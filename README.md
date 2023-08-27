@@ -1,16 +1,28 @@
 # Sprocket API 
 Flask Web Application running on Docker.
-Tests automated using github CI
+Tests automated using GitHub CI
 
 
 ## Overview
 It handles Sprocket and sprocket factories chart data through its **/factories** and **/sprocket** endpoints.
-This is a Flask web application that is containerized using Docker. Using SQLAlchemy it can run either on PostgresSQL or Sqlite database.
+This is a Flask web application that is containerized using Docker. Using SQLAlchemy it can run either on PostgreSQL or Sqlite database.
 
-## Requirements
+## Features
 
-- Docker
-- Docker Compose
+## Design Decisions and Future Considerations
+- Decided on storing the chart_data as a String inside a single column on the DB
+    - As it seems chart data is read-only for now, and we won't access individual data points it made more sense to bundle it all in a JSON blob
+    - This allows us to be flexible if we need to change this spec in the future
+    - If we did changing this approach would be necessary if we want to achieve write performance, read performance is better as is if you need the whole chart_data
+- Went with a single-layer design, since the project is so small separating routes from the internal CRUD logic of the model into a service layer would be overkill.
+    - If the logic for the routes gets more complex this should be done.
+    The same would apply to creating a repository layer if we needed custom queries. Though using an ORM is solving this for us.
+- Proper error handling would be nice with more time
+    - This would take the form of adding try catch in crucial parts of the code
+    - Having typed errors for ease of maintenance, e.g. "class ValidationError(Exception)" 
+- Proper logging integrated with request ID for tracking, (so having a request context passed around)
+- Auth if needed
+- Kubernetes and deployment to the cloud if needed
 
 ## Getting Started
 

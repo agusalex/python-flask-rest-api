@@ -1,9 +1,9 @@
 # Sprocket API 
-Flask Web Application with Docker.
-It handles Sprocket and sprocket factories chart data through its **/factories** and **/sprocket** endpoints.
+Flask Web Application running on Docker.
+
 
 ## Overview
-
+It handles Sprocket and sprocket factories chart data through its **/factories** and **/sprocket** endpoints.
 This is a Flask web application that is containerized using Docker. Using SQLAlchemy it can run either on PostgresSQL or Sqlite database.
 
 ## Requirements

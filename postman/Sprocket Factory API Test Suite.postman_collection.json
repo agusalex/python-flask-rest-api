@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "ae824b24-d878-4f18-af1a-bbb56c8f5de3",
+		"name": "Sprocket Factory API Test Suite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6890125"
+	},
+	"item": [
+		{
+			"name": "Get All Factories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/factories",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"factories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Factory by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/factories/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"factories",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Sprockets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sprockets",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sprockets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Sprocket by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sprockets/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sprockets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Sprocket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"teeth\": 20,\n  \"pitch_diameter\": 4.5,\n  \"outside_diameter\": 5.0,\n  \"pitch\": 1.2\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/sprockets",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sprockets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Sprocket by ID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"teeth\": 21,\n  \"pitch_diameter\": 4.6,\n  \"outside_diameter\": 5.1,\n  \"pitch\": 1.3\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/sprockets/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sprockets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": " http://127.0.0.1:5000"
+		}
+	]
+}

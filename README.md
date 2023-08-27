@@ -18,6 +18,7 @@ This is a Flask web application that is containerized using Docker. Using SQLAlc
 - Flask run/ Sqlite for development
 
 ## Design Decisions and Future Considerations
+- Asking questions, I would need to clarify exactly the nature of the project and dig down more into the endpoint requirements and their potential use
 - Decided on storing the chart_data as a String inside a single column on the DB
     - As it seems chart data is read-only for now, and we won't access individual data points it made more sense to bundle it all in a JSON blob
     - This allows us to be flexible if we need to change this spec in the future
@@ -35,6 +36,7 @@ This is a Flask web application that is containerized using Docker. Using SQLAlc
 - Docker image build on CI and add CD?
 - Status and health endpoints
 - Adding typings to this project, though python does not require it, making it typed helps with ease of debugging and hardening
+- Documenting the API using RAML
 
 ## Getting Started
 

@@ -8,6 +8,7 @@ It handles Sprocket and sprocket factories chart data through its **/factories**
 This is a Flask web application that is containerized using Docker. Using SQLAlchemy it can run either on PostgreSQL or Sqlite database.
 
 ## Features
+- GitHub CI for building running tests on the code
 - Docker and docker-compose
 - SQLAlchemy ORM
 - **v1/factories** and **v1/sprocket** endpoints
@@ -31,6 +32,7 @@ This is a Flask web application that is containerized using Docker. Using SQLAlc
 - Proper logging integrated with request ID for tracking, (so having a request context passed around)
 - Auth if needed
 - Kubernetes and deployment to the cloud if needed
+- Docker image build on CI and add CD?
 - Status and health endpoints
 - Adding typings to this project, though python does not require it, making it typed helps with ease of debugging and hardening
 

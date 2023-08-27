@@ -12,10 +12,13 @@ def create_app(config_name="production"):
     app = Flask(__name__)
 
     if config_name == "production":
+        print("Running on prod")
         app.config.from_object(ProductionConfig)
-    elif config_name == "development":
+    elif config_name == "development2":
+        print("Running on dev")
         app.config.from_object(DevelopmentConfig)
-    elif config_name == "testing":
+    elif config_name == "testing2":
+        print("Running on test")
         app.config.from_object(TestingConfig)
     else:
         raise ValueError(f"Unknown config: {config_name}")

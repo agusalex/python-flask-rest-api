@@ -8,13 +8,20 @@ It handles Sprocket and sprocket factories chart data through its **/factories**
 This is a Flask web application that is containerized using Docker. Using SQLAlchemy it can run either on PostgreSQL or Sqlite database.
 
 ## Features
-- 
+- Docker and docker-compose
+- SQLAlchemy ORM
+- **v1/factories** and **v1/sprocket** endpoints
+  - Create Read and Update for sprockets and Create/Read for factories
+- Tests for routes and utils
+- Gunicorn/Postgres deployment for prod
+- Flask run/ Sqlite for development
 
 ## Design Decisions and Future Considerations
 - Decided on storing the chart_data as a String inside a single column on the DB
     - As it seems chart data is read-only for now, and we won't access individual data points it made more sense to bundle it all in a JSON blob
     - This allows us to be flexible if we need to change this spec in the future
-    - If we did changing this approach would be necessary if we want to achieve write performance, read performance is better as is if you need the whole chart_data
+    - Data validation if we had to update would be harder. Search would be though, it does not seem like we would need that.
+    - If we did change this approach would be necessary if we want to achieve write performance, read performance is better as is if you need the whole chart_data
 - Went with a single-layer design, since the project is so small separating routes from the internal CRUD logic of the model into a service layer would be overkill.
     - If the logic for the routes gets more complex this should be done.
     The same would apply to creating a repository layer if we needed custom queries. Though using an ORM is solving this for us.
@@ -25,6 +32,7 @@ This is a Flask web application that is containerized using Docker. Using SQLAlc
 - Auth if needed
 - Kubernetes and deployment to the cloud if needed
 - Status and health endpoints
+- Adding typings to this project, though python does not require it, making it typed helps with ease of debugging and hardening
 
 ## Getting Started
 
@@ -70,4 +78,9 @@ To run tests within the Docker container, execute:
 ```bash
 docker-compose exec web pytest tests
 ```
+
+## Testing the servie
+
+Inside the postman folder there is a postman collection for testing this service.
+I will be spun up by default on port 8080
 

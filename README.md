@@ -8,6 +8,7 @@ It handles Sprocket and sprocket factories chart data through its **/factories**
 This is a Flask web application that is containerized using Docker. Using SQLAlchemy it can run either on PostgreSQL or Sqlite database.
 
 ## Features
+- 
 
 ## Design Decisions and Future Considerations
 - Decided on storing the chart_data as a String inside a single column on the DB
@@ -23,6 +24,7 @@ This is a Flask web application that is containerized using Docker. Using SQLAlc
 - Proper logging integrated with request ID for tracking, (so having a request context passed around)
 - Auth if needed
 - Kubernetes and deployment to the cloud if needed
+- Status and health endpoints
 
 ## Getting Started
 

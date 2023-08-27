@@ -420,3 +420,5 @@ pip-selfcheck.json
 *.sqlite
 
 *.pytest_cache
+
+.idea

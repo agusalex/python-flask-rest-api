@@ -18,7 +18,7 @@ class Factory(db.Model):
         })
 
     def serialize(self):
-        return {"factory": {"chart_data": json.loads(self.chart_data)}}
+        return {"id": self.id, "chart_data": json.loads(self.chart_data)}
 
 
 class Sprocket(db.Model):

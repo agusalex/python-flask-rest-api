@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
@@ -33,5 +34,5 @@ def create_app(config_name="production"):
 
     from .routes import init_routes
     init_routes(app, db)
-
+    CORS(app, origins=["http://127.0.0.1:3000", "http://localhost:3000"])
     return app

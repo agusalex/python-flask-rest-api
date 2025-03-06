@@ -22,5 +22,3 @@ def validate_factory_data(data):
         return True, "Data is valid"
     except KeyError:
         return False, "Invalid JSON structure."
-
-

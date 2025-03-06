@@ -1,11 +1,13 @@
 from flask import Blueprint
-from flask import request, jsonify, session
+from flask import request, jsonify
+
 from app.models import Sprocket, Factory
 from app.utils import validate_sprocket_data, validate_factory_data
 
 
 def init_routes(app, db):
     v1_blueprint = Blueprint('v1', __name__, url_prefix='/v1')
+
     @v1_blueprint.route('/factories', methods=['GET'])
     def get_all_factories():
         factories = Factory.query.all()
@@ -35,7 +37,7 @@ def init_routes(app, db):
     @v1_blueprint.route('/sprockets', methods=['GET'])
     def get_all_sprockets():
         sprockets = Sprocket.query.all()
-        return jsonify({"sprockets":[
+        return jsonify({"sprockets": [
             {
                 "id": sprocket.id,
                 "teeth": sprocket.teeth,

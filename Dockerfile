@@ -2,7 +2,7 @@ FROM python:3.9-slim-buster
 
 
 ENV FLASK_APP=app.py
-ENV PORT=5000
+ENV PORT=8080
 
 RUN apt-get update && \
     apt-get install -y gcc python3-dev libpq-dev

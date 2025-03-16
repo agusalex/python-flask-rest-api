@@ -1,4 +1,4 @@
-# Sprocket API 
+# Python-flask-rest-api
 Flask Web Application running on Docker.
 Tests automated using GitHub CI
 
